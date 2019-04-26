@@ -50,25 +50,33 @@ def checkboost(username,server):
 		if 'lost' not in locals():
 			lost=0
 		print('Pripyat Hard Won:%s\nPripyat Hard Loss:%s'%(won,lost))
+		print('\n')
 		proceed=True
 	if proceed:
 		stats=requests.get('http://api.wf.my.com/user/achievements/?name=%s&server=%s'%(username,scode)).json()
 		for x in stats:
-			if 'chernobyl_stripe_' in x['achievement_id']:
-				if x['achievement_id']=='chernobyl_stripe_rifleman':
-					print('Rifleman Stripe: %s'%x['completion_time'])
-				elif x['achievement_id']=='chernobyl_stripe_medic':
-					print('Medic Stripe: %s'%x['completion_time'])
-				elif x['achievement_id']=='chernobyl_stripe_recon':
-					print('Sniper Stripe: %s'%x['completion_time'])
-				elif x['achievement_id']=='chernobyl_stripe_engineer':
-					print('Engineer Stripe: %s'%x['completion_time'])
-				else:
-					continue
+			if x['achievement_id']=='chernobyl_stripe_rifleman':
+				print('Rifleman Stripe: %s'%x['completion_time'])
+			elif x['achievement_id']=='chernobyl_stripe_medic':
+				print('Medic Stripe: %s'%x['completion_time'])
+			elif x['achievement_id']=='chernobyl_stripe_recon':
+				print('Sniper Stripe: %s'%x['completion_time'])
+			elif x['achievement_id']=='chernobyl_stripe_engineer':
+				print('Engineer Stripe: %s'%x['completion_time'])
+			else:
+				continue
+		print('\n')
+		for x in stats:
+			if x['achievement_id']=='chernobyl_stripe_hardcore':
+				print('Zero Death Stripe: %s'%x['completion_time'])
+			elif x['achievement_id']=='chernobyl_secret_badge_03':
+				print('Golden Nut Badge: %s'%x['completion_time'])
+			else:
+				continue
 def checkBatch(member_list,server):
 	for x in member_list:
 		checkboost(x, server)
-		print('\n')
+		print('\n------\n')
 while True:		
         choice=input("Would you like you check for a clan or a player?\n")
         if choice.lower()=='clan':
