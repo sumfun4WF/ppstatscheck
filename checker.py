@@ -49,20 +49,20 @@ def checkboost(username,server):
 			won=0
 		if 'lost' not in locals():
 			lost=0
-		print('皮城专家通关次数:%s\n皮城专家失败次数:%s'%(won,lost))
+		print('Pripyat Hard Won:%s\nPripyat Hard Loss:%s'%(won,lost))
 		proceed=True
 	if proceed:
 		stats=requests.get('http://api.wf.my.com/user/achievements/?name=%s&server=%s'%(username,scode)).json()
 		for x in stats:
 			if 'chernobyl_stripe_' in x['achievement_id']:
 				if x['achievement_id']=='chernobyl_stripe_rifleman':
-					print('步枪名牌: %s'%x['completion_time'])
+					print('Rifleman Stripe: %s'%x['completion_time'])
 				elif x['achievement_id']=='chernobyl_stripe_medic':
-					print('医疗名片: %s'%x['completion_time'])
+					print('Medic Stripe: %s'%x['completion_time'])
 				elif x['achievement_id']=='chernobyl_stripe_recon':
-					print('狙击名片: %s'%x['completion_time'])
+					print('Sniper Stripe: %s'%x['completion_time'])
 				elif x['achievement_id']=='chernobyl_stripe_engineer':
-					print('工程名片: %s'%x['completion_time'])
+					print('Engineer Stripe: %s'%x['completion_time'])
 				else:
 					continue
 def checkBatch(member_list,server):
