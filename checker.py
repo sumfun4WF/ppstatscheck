@@ -69,17 +69,18 @@ def checkBatch(member_list,server):
 	for x in member_list:
 		checkboost(x, server)
 		print('\n')
-		
-choice=input("Would you like you check for a clan or a player?\n")
-if choice.lower()=='clan':
-	clan=input("Clan name: ")
-	server=input("Server: ")
-	print("\n")
-	thelist=getMembers(clan, server)
-	checkBatch(thelist, server)
-	print('Players who hid their statistics cannot be checked by their clan name, please check with their username individually.')
-elif choice.lower()=='player':
-	username=input("Username: ")
-	server=input("Server: ")
-	print("\n")
-	checkboost(username, server)
+while True:		
+        choice=input("Would you like you check for a clan or a player?\n")
+        if choice.lower()=='clan':
+                clan=input("Clan name: ")
+                server=input("Server: ")
+                print("\n")
+                thelist=getMembers(clan, server)
+                checkBatch(thelist, server)
+                print('Players who hid their statistics cannot be checked by their clan name, please check with their username individually.')
+        elif choice.lower()=='player':
+                username=input("Username: ")
+                server=input("Server: ")
+                print("\n")
+                checkboost(username, server)
+        input("Press Enter to continue...")
